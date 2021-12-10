@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 
+const apolloClient = new ApolloClient({
+  uri: 'https://rickandmortyapi.com/graphql',
+  cache: new InMemoryCache(),
+});
+
+// Componentes y Constructores
+// MyComponent
+
+// Variables normales
+// myValue
+
 ReactDOM.render(
-  <ChakraProvider>
-    <App />
-  </ChakraProvider>,
+  <ApolloProvider client={apolloClient}>
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
+  </ApolloProvider>,
   document.getElementById('root'),
 );
 
